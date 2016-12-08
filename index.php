@@ -2,6 +2,9 @@
 require "vendor/autoload.php";
 use PropertyFinder\PropertyFinder;
 
+/**
+ * Input, add your boarding cards here
+ */
 $input = [
     ['from' => 'Washington', 'to' => 'Tokyo',       'type' => 'Plane',  'seat' => '23D'],
     ['from' => 'New York',   'to' => 'Washington',  'type' => 'Bus',    'seat' => ''],
@@ -11,10 +14,16 @@ $input = [
     ['from' => 'Barcelona',  'to' => 'Paris',       'type' => 'Train',  'seat' => '19J'],
 ];
 
+/**
+ * Main logic
+ */
 $propertyFinder = new PropertyFinder($input);
 $boardingCards = $propertyFinder->sort();
 $propertyFinder->print($boardingCards);
 
+/**
+ * Helper useful for debugging purposes
+ */
 function dd($input) {
     die(var_dump($input));
 }

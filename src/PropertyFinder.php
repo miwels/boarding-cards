@@ -7,7 +7,8 @@ class PropertyFinder
     protected $trips;
     protected $boardingCards;
 
-    public function __construct(array $trips) {
+    public function __construct(array $trips)
+    {
         $this->trips = $trips;
         $this->boardingCards = $this->factorize();
     }
@@ -18,11 +19,10 @@ class PropertyFinder
     public function factorize()
     {
         foreach($this->trips as $trip) {
-            $boardingCard = new BoardingCardFactory(
-                                    $trip['type'],
-                                    $trip['from'],
-                                    $trip['to'],
-                                    $trip['seat']);
+            $boardingCard = new BoardingCardFactory($trip['type'],
+                                                    $trip['from'],
+                                                    $trip['to'],
+                                                    $trip['seat']);
 
             $this->boardingCards[] = $boardingCard->make();
         }
