@@ -12,23 +12,40 @@ class PropertyFinder
 
     public function sort()
     {
-        $sortedTrips = [];
-        $i = 0;
-        $tripsArr = [];
+        $boardingCards = [];
 
         foreach($this->trips as $trip) {
             $boardingCard = new BoardingCardFactory($trip['type'], $trip['from'], $trip['to'], $trip['seat']);
-            $tripsArr[] = $boardingCard->make();
+            $boardingCards[] = $boardingCard->make();
         }
 
-        foreach($tripsArr as $boardingCard) {
+        // find first the start card. This card is the one with a start that
+        // doesn't show up in any of the 'end' destinations
+        $output = [array_pop($boardingCards)];
+
+        while(count($boardingCards) > 0)
+        {
+            foreach($boardingCards as $key => $val)
+            {
+                if(end($output)->getTo() == $val->getFrom()) {
+                    array_push($output, $val);
+                    unset($boardingCards[$key]);
+                }
+
+                if(reset($output)->getFrom() == $val->getTo()) {
+                    array_unshift($output, $val);
+                    unset($boardingCards[$key]);
+                }
+            }
+        }
+
+        return $output;
+    }
+
+    public function print(array $boardingCards)
+    {
+        foreach($boardingCards as $boardingCard) {
             echo $boardingCard->printTrip();
         }
-
-        /*
-        while($i < count($this->$trips)) {
-            $currentTrip = $this->$trips[$i];
-        }
-        */
     }
 }
