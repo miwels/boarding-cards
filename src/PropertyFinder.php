@@ -14,8 +14,14 @@ class PropertyFinder
     {
         $boardingCards = [];
 
-        foreach($this->trips as $trip) {
-            $boardingCard = new BoardingCardFactory($trip['type'], $trip['from'], $trip['to'], $trip['seat']);
+        foreach($this->trips as $trip)
+        {
+            $boardingCard = new BoardingCardFactory(
+                                    $trip['type'],
+                                    $trip['from'],
+                                    $trip['to'],
+                                    $trip['seat']);
+
             $boardingCards[] = $boardingCard->make();
         }
 
@@ -28,7 +34,7 @@ class PropertyFinder
             foreach($boardingCards as $key => $val)
             {
                 if(end($output)->getTo() == $val->getFrom()) {
-                    array_push($output, $val);
+                    $output[] = $val;
                     unset($boardingCards[$key]);
                 }
 
