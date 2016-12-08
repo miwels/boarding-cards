@@ -5,28 +5,37 @@ use PropertyFinder\BoardingCard\Factory\BoardingCardFactory;
 class PropertyFinder
 {
     protected $trips;
+    protected $boardingCards;
 
     public function __construct(array $trips) {
         $this->trips = $trips;
+        $this->boardingCards = $this->factorize();
     }
 
-    public function sort()
+    /**
+     * Converts our input into objects using our Factory class
+     */
+    public function factorize()
     {
-        $boardingCards = [];
-
-        foreach($this->trips as $trip)
-        {
+        foreach($this->trips as $trip) {
             $boardingCard = new BoardingCardFactory(
                                     $trip['type'],
                                     $trip['from'],
                                     $trip['to'],
                                     $trip['seat']);
 
-            $boardingCards[] = $boardingCard->make();
+            $this->boardingCards[] = $boardingCard->make();
         }
 
-        // find first the start card. This card is the one with a start that
-        // doesn't show up in any of the 'end' destinations
+        return $this->boardingCards;
+    }
+
+    /**
+     * Sorts boarding cards
+     */
+    public function sort()
+    {
+        $boardingCards = $this->boardingCards;
         $output = [array_pop($boardingCards)];
 
         while(count($boardingCards) > 0)
@@ -48,6 +57,9 @@ class PropertyFinder
         return $output;
     }
 
+    /**
+     * Prints all object properties
+     */
     public function print(array $boardingCards)
     {
         foreach($boardingCards as $boardingCard) {
