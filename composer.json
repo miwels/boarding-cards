@@ -1,0 +1,17 @@
+{
+    "name": "miguel.martin/property-finder",
+    "description": "PHP Test for PropertyFinder",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Miguel Martin",
+            "email": "miguel.martin.vilanova@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PropertyFinder\\": "src/"
+        }
+    }
+}
