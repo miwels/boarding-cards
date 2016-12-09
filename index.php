@@ -19,7 +19,7 @@ $input = [
  */
 $propertyFinder = new PropertyFinder($input);
 $boardingCards = $propertyFinder->sort();
-$propertyFinder->print($boardingCards);
+echo $propertyFinder->print($boardingCards);
 
 /**
  * Helper useful for debugging purposes

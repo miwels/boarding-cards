@@ -8,7 +8,9 @@
             "email": "miguel.martin.vilanova@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "codeception/codeception": "^2.2"
+    },
     "autoload": {
         "psr-4": {
             "PropertyFinder\\": "src/"

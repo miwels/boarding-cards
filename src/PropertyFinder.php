@@ -62,8 +62,10 @@ class PropertyFinder
      */
     public function print(array $boardingCards)
     {
+        $output = "";
         foreach($boardingCards as $boardingCard) {
-            echo $boardingCard->printTrip();
+            $output .= $boardingCard->printTrip();
         }
+        return $output;
     }
 }
