@@ -1,5 +1,5 @@
 # boarding-cards
-This technical test has been created from scratch using just PHP 5.3+ features (no PHP7 features like function return types).
+This technical test has been created from scratch using just PHP 5.3+ features (no PHP7 features like function return types) and composer's ps-4 autoloader.
 
 In order to build the tests we have used the **codeception** test tool.
 
@@ -10,11 +10,11 @@ To deploy simply do:
 	composer install
 	alias codecept='./vendor/bin/codecept'
 
-The application entry point is **index.php**. We have included a default input but you can add your own ownes. We have assumed that all boarding cards have a type, start and end but the seat is optional.
+The application entry point is **index.php**. We have included a default input but you can add your own one. We have assumed that all boarding cards have a type, start and end fields but the seat is optional.
 
-In order to build the tests we have used the same input from the index.php but obviously this can be changed.
+In order to build the tests we have used the same input from the index.php file but obviously this can be changed.
 
-The main class has 3 method from which 2 of them are optional
+The main class has 3 methods from which 2 of them are public
 
     sort(): returns the sorted boarding cards
     print(): returns a readable output.

@@ -18,7 +18,7 @@ class PropertyFinder
      *
      * @return array an array of boarding cards
      */
-    public function factorize()
+    protected function factorize()
     {
         foreach($this->trips as $trip) {
             $boardingCard = new BoardingCardFactory($trip['type'],
