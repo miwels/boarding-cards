@@ -27,6 +27,10 @@ class BoardingCardFactory
         $this->seat = $seat;
     }
 
+    /**
+     * Returns an instance of BoardingCard depending on 'type'
+     * @return [type] [description]
+     */
     public function make() {
         switch($this->type) {
             case self::TRAIN:
